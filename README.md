@@ -1,44 +1,65 @@
-# Examen Prog Multimedial 3ro ( y 4to por excepción ) (2022-2023)
+# Examen Prog Multimedial 3ro ( y 4to por excepción ) (Julio 2023)
 
 El objetivo de este examen es que el alumno pueda demostrar conocimientos sobre: ES6 (template literals, arrow functions, destructuring, map, etc), ReactJs, NextJs (next/router, next/link, next/image), useState, useEffect, async/await, axios.
 Se valora el uso de buenas prácticas, sugar syntax, eficiencia en el código, reutilización de código, captura de errores, UX/UI, legibilidad y - USO DE PADDINGS/MARGINS! XD - 
 
-## Tiempo estimado de resolución
+Ejemplo de búsqueda de show: https://api.tvmaze.com/search/shows?q=batman
+
+## Tiempo máximo de resolución
 3 hrs.
 
 ## Objetivos
 
-1. Component Show
-- Crear un functional component llamado Show que reciba como prop un id (integer). 
-- El mismo funcionará a modo de card, mostando: image.original , name, genres, rating.average, + un dato a elección. 
-- Al montarse el componente deberá hacer un request a https://api.tvmaze.com/shows/[id]. El request deberá ser mediante AXIOS (async/await) utilizando try/catch para controlar la respuesta. 
-- El objeto obtenido en el request deberá almacenarse en el estado del componente.
-- Los estilos para el maquetado del compoenente deben estar en un archivo llamado Show.module.css en la carpeta del compoenente.
-- Contemplar el uso de Loadings en el request.
+1. ### AppContext
+- Dentro de AppContext completar las funciones: 
+- - handleGetShows ( async (query: string)=> void; ). Axios GET a: https://api.tvmaze.com/search/shows?q=[nombreShow]
+- - handleGetSingleShow ( async (id: string)=> void; ). Axios GET a: https://api.tvmaze.com/shows/[id]
+- Se deben completar los valores correspondientes del state y manejar los loadings. Utilizar try/catch en las llamadas.
+- Los valores almacenados en el state del context y sus funciones se deben utilizar en los demás componentes mediante el hook useAppContext(). Ej: Import { useAppContext } from '../../contexts/AppContext'
+
+
+2. ### Component Search
+- Utilizar el formulario dado para realizar requests a handleGetShows pasando como parametro el valor del query en el metodo onSubmit.
+- Desplegar este componente a modo de section en homeContainer, bajo el titulo de "Search your show"
+
+
+3. ### Component Results
+- Crear un functional component llamado Featured Shows, el cual contenga una grilla (pueden utilizar .grid y .col_4 incluidas en grid.css) de 3 columnas, la cual muestre 3 Shows por fila. (Utilizar el componente Show del punto siguiente)
+- Incluir el title (h2) "Search results"
+- Desplegar este componente a modo de section en homeContainer debajo de Search.
+
+
+4. ### Component Show
+- Crear un functional component llamado Show que reciba como props los datos necesarios a desplegar (no olvidar el id). Usar destructuring.
+- El mismo funcionará a modo de card, mostrando: image?.original, name, genres, rating?.average, + un dato a elección. 
+- Los estilos para el maquetado del compoenente deben estar en un archivo llamado Show.module.css en la carpeta del componente.
 - Incluir un Link (next/link) a modo de botón que lleve a /shows/[id].
 
-2. Component FeaturedShows
-- Crear un functional component llamado Featured Shows, el cual contenga una grilla (pueden utilizar .grid y .col_4 incluidas en grid.css) de 3 columnas, la cual muestre 3 Shows utilizando el componente del punto anterior.
-- Incluir el title (h2) "Featured Shows"
-- Desplegar este componente en la home page debajo del Hero.
 
-3. Page /shows/[id]
-- Crear una página /shows/[id].js que obtenga mediante Next Router (useRouter, router.query) el id correspondiente al show y al montarse, llame a la funcion handleGetShowData la cual hace un request a https://api.tvmaze.com/shows/[id] (idem punto 1.). Esta vez la información a mostrar del show será: name, language, status, ended (se puede formatear la fecha utilizando day.js), rating, image.original, summary.
-- En una segunda sección, debe mostrar los actores que se obtienen al hacer un request a https://api.tvmaze.com/shows/[id]/cast. Se debe incluir el person.name, person.country.name, person.image.medium, person.character.name.
+5. ### Page /shows/[id] y ShowContainer
+- Crear una página /shows/[id].js que obtenga mediante Next Router (useRouter, router.query) el id correspondiente al show y al montarse, llame a la funcion handleGetSingleShow. Esta vez la información a mostrar del show será: name, language, status, ended (se puede formatear la fecha utilizando day.js), rating, image?.original, summary.
+- Utilizar el useEffect dado (no remover la linea //eslint-disable-next-line react-hooks/exhaustive-deps)
 
-4. Component Search
-- Utilizar el formulario dado para realizar requests al endpoint https://api.tvmaze.com/search/shows?q=[nombre_show].
-- Utilizar el componente Show del punto 1. para mostrar una grilla de 4 columnas con los resultados de la búsqueda.
-- Agregar este componente a modo de section en la home, bajo el titulo de "Search your show"
 
-5. Navbar
-- Crear un Next link a /about
+6. ### Navbar
+- Crear un Next link a /about. Crear la página About dentro de /pages. Crear AboutContainer.js
 - Completar esa página con los datos del alumno.
 
-6. Styles
+
+7. ### Styles
 - Estilar los componentes y paginas creadas utilizando breakpoints en 768 y 480 px.
 
-7. Pushear a github y crear el proyecto en Vercel.
+
+8. ### Deploy
+- Pushear a Github y crear el proyecto en Vercel. Se tomará como entrega el link publico y el link de Github.
+
+## Observaciones
+- Utilizar todos los métodos y variables entregadas
+- Para las imágenes utilizar <Image src={} width={} height={} alt={} /> de next/image. Para el source utilizar showData.show.image?.original. El ? sirve para evitar error al acceder a un subcampo que puede ser undefined.
+- Para los links internos utilizar <Link href={} /> de next/link.
+- Todos los maps() deben tener el key={index} correspondiente.
+- No se aceptarán errores o warnings en la consola.
+- Utilizar buenas prácticas y sugar syntax / destructuring donde sea posible.
 
 ## Getting Started
 

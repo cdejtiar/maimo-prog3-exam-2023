@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const Navbar = () => {
   return (
-    <div className={`card ${styles['container']}`}>
+    <div className={`${styles['container']}`}>
       <div className={styles['logo']}>
         <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
       </div>
