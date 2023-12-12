@@ -4,10 +4,7 @@ const Hero = () => {
   return (
     <div className={styles['container-hero']}>
       <div className={styles.txt_wrapper}>
-        <h1 className={styles.title}>
-          Welcome to{' '}
-          <a href="https://multimedia.maimonides.edu/">the machine</a>
-        </h1>
+        <h1 className={styles.title}>TV Shows</h1>
         <p>Choose your favorite shows</p>
       </div>
 

@@ -3,7 +3,10 @@ import Hero from '../components/Hero/Hero';
 import Navbar from '../components/Navbar/Navbar';
 import HomeContainer from '../containers/HomeContainer';
 
+import Image from 'next/image';
+
 export default function Home() {
+  
   return (
     <div>
       <Head>
@@ -16,6 +19,7 @@ export default function Home() {
       <main className={`main`}>
         <Hero />
         <HomeContainer />
+        
       </main>
 
       <footer className={`footer`}>
