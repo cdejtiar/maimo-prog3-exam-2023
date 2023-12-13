@@ -14,7 +14,7 @@ const FeaturedShows = () => {
             <div key={show.show.id}>
               <h2>{show.show.name}</h2>
               <Image
-                src={show.show.image.medium}
+                src={show.show.image?.medium}
                 alt=""
                 width={'100'}
                 height={'100'}
