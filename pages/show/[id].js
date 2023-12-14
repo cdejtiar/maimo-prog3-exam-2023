@@ -4,9 +4,8 @@ import ShowContainer from '../../containers/ShowContainer';
 import { useRouter } from 'next/router';
 
 const Show = () => {
-  {
-    /* <p>Obtain the router id from router query here</p> */
-  }
+  const router = useRouter();
+  const { id } = router.query;
 
   return (
     <div>
@@ -17,7 +16,9 @@ const Show = () => {
       </Head>
       <Navbar />
 
-      <main className={`main`}>{/* <p>display showContainer here</p> */}</main>
+      <main className={`main`}>
+        <ShowContainer id={id} />
+      </main>
 
       <footer className={`footer`}>
         <a href="#" target="_blank" rel="noopener noreferrer">

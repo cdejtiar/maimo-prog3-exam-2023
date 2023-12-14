@@ -12,11 +12,10 @@ const AppProvider = ({ defaultValue = [], children }) => {
   const handleGetShows = async (query) => {
     try {
       setLoading(true);
-      const response = await axios.get(
+      const request = await axios.get(
         `https://api.tvmaze.com/search/shows?q=${query}`,
       );
-      setShowsData(response.data);
-      console.log('RESPONSE', response.data);
+      setShowsData(request.data);
       setLoading(false);
     } catch (error) {
       console.log('ERROR EN EL CATCH', error);
@@ -25,18 +24,18 @@ const AppProvider = ({ defaultValue = [], children }) => {
 
   const handleGetSingleShow = async (id) => {
     try {
-      setLoading(true);
-      const response = await axios.get(`https://api.tvmaze.com/shows/${id}`);
-      setSingleShowData(response.data);
-      setLoading(false);
+      setShowLoading(true);
+      const request = await axios.get(`https://api.tvmaze.com/shows/${id}`);
+      setSingleShowData(request.data);
+      setShowLoading(false);
     } catch (error) {
       console.log('ERROR EN EL CATCH', error);
     }
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     handleGetShows();
-  }, []);
+  }, []);*/
 
   return (
     <AppContext.Provider
