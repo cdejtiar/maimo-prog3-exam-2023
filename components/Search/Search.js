@@ -4,9 +4,9 @@ import { Formik } from 'formik';
 import { useAppContext } from '../../contexts/AppContext';
 
 const Search = () => {
-  const { showsData, handleGetShows, loading } = useAppContext();
+  const { handleGetShows } = useAppContext();
   return (
-    <section>
+    <section className={styles[`search`]}>
       <h2>Search shows</h2>
       <div className={styles.form_container}>
         <Formik
@@ -14,7 +14,7 @@ const Search = () => {
           validate={(values) => {
             const errors = {};
             if (!values.show) {
-              errors.show = 'Required';
+              errors.show = '* Required';
             }
             return errors;
           }}
@@ -37,11 +37,14 @@ const Search = () => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.show}
+                className={styles[`input`]}
               />
               <div className={styles.error}>
                 {errors.show && touched.show && errors.show}
               </div>
-              <button type="submit">Search</button>
+              <button className={styles[`btn`]} type="submit">
+                SEARCH
+              </button>
             </form>
           )}
         </Formik>

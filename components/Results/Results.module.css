@@ -1,6 +1,19 @@
 .results_container{
-  background-color: #181818;
+  background-color: #49163d;
   width: 90%;
   border-radius: 10px;
   margin: 30px 0;
+  color: #eaf2ef;
+}
+
+.sectionTitle{
+  color: #eaf2ef;
+  text-align: center;
+}
+
+.loader {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

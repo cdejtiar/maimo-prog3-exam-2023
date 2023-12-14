@@ -6,20 +6,18 @@ import HomeContainer from '../containers/HomeContainer';
 import Image from 'next/image';
 
 export default function Home() {
-  
   return (
     <div>
       <Head>
         <title>Examen Prog 2023</title>
-        <meta name="description" content="Welcome to the machine" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Exam Practice" />
+        <link rel="icon" href="/streaming logo.svg" />
       </Head>
       <Navbar />
 
       <main className={`main`}>
         <Hero />
         <HomeContainer />
-        
       </main>
 
       <footer className={`footer`}>

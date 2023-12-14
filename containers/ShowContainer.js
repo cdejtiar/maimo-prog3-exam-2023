@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../contexts/AppContext';
 import Image from 'next/image';
+import loader from '../public/assets/loader.svg';
 import dayjs from 'dayjs';
+import styles from './ShowContainer.module.css';
 
 const ShowContainer = ({ id }) => {
   const { singleShowData, handleGetSingleShow, showLoading } = useAppContext();
@@ -14,13 +16,14 @@ const ShowContainer = ({ id }) => {
 
   return (
     <>
+      {/* Todo esto podría haberlo puesto en otro componente, pero lo dejo acá para tenerlo a mano*/}
       {!showLoading && (
-        <div>
+        <div className={styles[`containerShow`]}>
           <div>
             <Image
               src={singleShowData.image?.original}
-              width={100}
-              height={200}
+              width={200}
+              height={300}
               alt={singleShowData.name}
             />
           </div>
@@ -28,25 +31,30 @@ const ShowContainer = ({ id }) => {
           <p>Language: {singleShowData.language}</p>
           <p>Status: {singleShowData.status}</p>
           <p>
-            Ended:
+            Ended: <span> </span>
             {singleShowData.ended ? (
               dayjs(singleShowData.ended).format('YYYY/MM/DD')
             ) : (
-              <span> Ongoing</span>
+              <span>Ongoing</span>
             )}
           </p>
           <p>
-            Rating:
+            Rating: <span> </span>
             {singleShowData.rating?.average != null ? (
               singleShowData.rating?.average
             ) : (
-              <span> Not ranked</span>
+              <span>Not ranked</span>
             )}
           </p>
           <p>Summary: {singleShowData.summary}</p>
         </div>
       )}
-      {showLoading && <p>Loading...</p>}
+      {showLoading && (
+        <div className={styles[`loader`]}>
+          <Image src={loader} alt="Loader" width={100} height={100} />
+          <p>Loading...</p>
+        </div>
+      )}
     </>
   );
 };

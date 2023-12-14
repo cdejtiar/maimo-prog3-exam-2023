@@ -1,0 +1,39 @@
+.show{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #912f56;
+    color: #eaf2ef;
+}
+
+.cardName{
+    color:#eaf2ef;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.goTo{
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    background-color: #49163d;
+    color: white;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.goTo:hover{
+    opacity: 0.8;
+    transition: cubic-bezier(0.58, -0.02, 0.4, 1.06) 0.2s;
+}

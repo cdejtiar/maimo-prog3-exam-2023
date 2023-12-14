@@ -1,0 +1,28 @@
+.containerShow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    background-color: #eaf2ef;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    margin-top: 8em;
+    margin-left: 1em;
+    margin-right: 1em;
+    text-align: center;
+    line-height: 1.5;
+}
+
+.containerShow h2, .containerShow p, .containerShow span{
+    color: #0d090a;
+}
+
+@media (prefers-color-scheme: dark) {
+    .containerShow{
+        box-shadow: 0 0 10px rgba(255,255,255,0.5);
+    }
+}
